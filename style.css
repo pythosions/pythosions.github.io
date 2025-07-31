@@ -1,4 +1,7 @@
-/* Общие стили */
+/* ==========================================================================
+   1. ОБЩИЕ СТИЛИ И ОСНОВНЫЕ КОНТЕЙНЕРЫ
+   ========================================================================== */
+
 body {
     font-family: Rubik, sans-serif;
     line-height: 1.6;
@@ -9,12 +12,18 @@ body {
 }
 
 .container {
-    max-width: 90%;
+    max-width: 809px;
+    width: 90%;
     margin: 0 auto;
     background-color: white;
     padding: 20px 0 5px 0px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: solid rgba(217, 234, 250, 1) 1px ;
+}
+
+.full-container{
+    display: none;
 }
 
 h1 {
@@ -27,7 +36,17 @@ h1 {
     font-weight: 500;
 }
 
-.container__head{
+/* Скрываем мобильный заголовок по умолчанию */
+.h1-mobile {
+    display: none;
+}
+
+/* ==========================================================================
+   2. СТРУКТУРА СТРАНИЦЫ (ШАПКА, ТАБЫ, ФУТЕР)
+   ========================================================================== */
+
+/* Шапка */
+.container__head {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -35,24 +54,25 @@ h1 {
     padding: 0 20px;
 }
 
-.head__additional-menu{
+.head__additional-menu {
     width: 16px;
     height: 16px;
     content: url(/img/UI/more_menu.svg);
 }
 
-.tabs__rows{
+/* Табы (вкладки) */
+.tabs__rows {
     display: flex;
     flex-direction: row;
     height: 62px;
     width: 100%;
     border-top: solid #D9EAFA 1px;
-    border-bottom: solid #D9EAFA 1px;
+    /* Убрана нижняя граница, чтобы избежать удвоения */
     align-items: stretch;
     justify-content: space-around;
 }
 
-.tabs_item{
+.tabs_item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,25 +81,76 @@ h1 {
     line-height: 14px;
 }
 
-.tabs-tem--active{
+.tabs-tem--active {
     display: flex;
     font-weight: 500;
     border-bottom: solid #00C659 3px;
 }
 
-/* Flex-таблица */
+/* Футер */
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    height: 74px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+}
+
+.see-more-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #262F56;
+}
+
+.see-more {
+    text-decoration: none;
+    font-weight: 500;
+    color: #262F56;
+    font-size: 15px;
+}
+
+.right-arrow {
+    content: url(/img/UI/arrow_right.svg);
+    width: 16px;
+    height: 12px;
+}
+
+.how-rating {
+    color: #00C659;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   3. FLEX-ТАБЛИЦА: СТРУКТУРА И КОЛОНКИ
+   ========================================================================== */
+
 .flex-table {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.flex-table-header, .flex-table-row {
+/* --- ИЗМЕНЕНИЕ ЗДЕСЬ --- */
+/* Добавляем общую верхнюю границу для всей таблицы */
+#table-body {
+    border-top: 1px solid rgba(217, 234, 250, 1);
+}
+
+.flex-table-header,
+.flex-table-row {
     display: flex;
     padding: 12px 15px;
     align-items: center;
+    /* Каждая строка теперь имеет ТОЛЬКО нижнюю границу, чтобы избежать удвоения */
     border-bottom: 1px solid rgba(217, 234, 250, 1);
 }
+/* --- КОНЕЦ ИЗМЕНЕНИЯ --- */
+
 
 .flex-table-header {
     font-weight: bold;
@@ -91,19 +162,19 @@ h1 {
     background-color: #f9f9f9;
 }
 
-/* Колонки */
+/* Колонки таблицы */
 .flex-col-logo {
     flex: 0;
- flex-basis: 140px;
- display: flex;
- justify-content: center;
+    flex-basis: 140px;
+    display: flex;
+    justify-content: center;
 }
 
 .flex-col-rating {
     flex: 1;
- flex-basis: 130px;
- display: flex;
-justify-content: center;
+    flex-basis: 130px;
+    display: flex;
+    justify-content: center;
 }
 
 .flex-col-reviews {
@@ -130,7 +201,11 @@ justify-content: center;
     justify-content: center;
 }
 
-/* Стили для элементов внутри строк */
+/* ==========================================================================
+   4. КОМПОНЕНТЫ ВНУТРИ ТАБЛИЦЫ
+   ========================================================================== */
+
+/* Логотип */
 .logo-container {
     position: relative;
     width: 120px;
@@ -152,7 +227,8 @@ justify-content: center;
     height: 16px;
 }
 
-.rating-value{
+/* Рейтинг и звезды */
+.rating-value {
     font-size: 15px;
     font-weight: 500;
 }
@@ -177,199 +253,7 @@ justify-content: center;
     position: relative;
 }
 
-.spark {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background-color: gold;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: spark-fly 1s ease-out forwards;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Бейджи */
-.badge {
-    display: inline-block;
-    padding: 6px 8px;
-    border-radius: 30px;
-    font-size: 12px;
-    line-height: 12px;
-    font-weight: 500;
-    overflow: hidden;
-}
-
-.badge-exclusive {
-    background-color: rgba(176, 43, 200, 0.12);
-    color: rgba(176, 43, 200, 1)
-}
-
-.badge-no-deposit {
-    background-color: rgba(0, 198, 89, 0.12)    ;
-    color: rgba(0, 198, 89, 1);
-}
-
-.badge-no-bonus {
-    background-color: rgba(200, 43, 50, 0.12);
-    color: rgba(200, 43, 50, 1);
-}
-
-/* Кнопки */
-.btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 6px 12px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 12px;
-
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.3s;
-    height: 38px;
-    letter-spacing: 2%;
-}
-
-.btn-review {
-    background-color: rgba(246, 246, 246, 1);
-    color: rgba(38, 47, 86, 1);
-
-    width: 90px;
-    border-radius: 6px;
-}
-
-.btn-site {
-    width: 82px;
-    background-color: rgba(0, 198, 89, 1);
-    color: rgba(255, 255, 255, 1);
-    border-radius: 6px;
-
-}
-
-.btn-review:hover {
-    background-color: #d0d0d0;
-}
-
-.btn-site:hover {
-    background-color: #3e8e41;
-}
-
-/* Футер */
-.footer-links {
-    display: flex;
-    justify-content: space-between;
-    height: 74px;
-    padding-left: 20px;
-    padding-right: 20px;
-    align-items: center;
-}
-
-.see-more-wrap{
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #262F56;
-}
-
-.right-arrow{
-    content: url(/img/UI/arrow_right.svg);
-    width: 16px;
-    height: 12px;
-}
-
-.see-more {
-    text-decoration: none;
-    font-weight: 500;
-    color: #262F56;
-    font-size: 15px;
-}
-
-.how-rating {
-    color: #00C659;
-    font-size: 15px;
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-/* Анимации */
-@keyframes sparkle {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); opacity: 0.8; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes star-explosion {
-    0% { transform: scale(1); opacity: 1; }
-    20% { transform: scale(1.5); opacity: 0.8; }
-    100% { transform: scale(0.5); opacity: 0; }
-}
-
-.star:hover {
-    animation: sparkle 0.5s ease infinite;
-    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7));
-}
-
-.star.exploding {
-    animation: star-explosion 0.6s ease-out forwards;
-}
-
-.spark {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background-color: gold;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: spark-fly 1s ease-out forwards;
-    top: 50%; /* Центрируем искры */
-    left: 50%;
-    transform: translate(-50%, -50%); /* Центрируем искры */
-}
-
-@keyframes spark-fly {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--tx), var(--ty)) scale(0);
-        opacity: 0;
-    }
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .flex-table-header {
-        display: none;
-    }
-    
-    .flex-table-row {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 15px;
-        gap: 10px;
-    }
-    
-    .flex-col-logo,
-    .flex-col-rating,
-    .flex-col-reviews,
-    .flex-col-bonus,
-    .flex-col-actions {
-        flex: 1 1 100%;
-        width: 100%;
-    }
-    
-    .flex-col-actions {
-        justify-content: flex-start;
-    }
-}
-
-/* Стили для обертки отзывов */
+/* Отзывы */
 .review-wrap {
     display: flex;
     align-items: center;
@@ -377,25 +261,16 @@ justify-content: center;
     gap: 4px;
 }
 
-/* Стили для иконки отзывов */
 .review-icon {
     width: 16px;
     height: 16px;
-    background-image: url('/img/UI/review_icon.svg'); /* Укажите путь к вашей иконке */
+    background-image: url('/img/UI/review_icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
-/* Адаптивные стили */
-@media (max-width: 768px) {
-    .review-wrap {
-        justify-content: flex-start;
-    }
-}
-
-
-/* Добавьте этот стиль в CSS */
+/* Бонусы */
 .bonus-wrap {
     display: flex;
     align-items: center;
@@ -414,14 +289,114 @@ justify-content: center;
     background-size: contain;
 }
 
-
-/* Анимация металлического отлива для бейджей */
+/* Бейджи */
 .badge {
+    display: inline-block;
+    padding: 6px 8px;
+    border-radius: 30px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
+.badge-exclusive {
+    background-color: rgba(176, 43, 200, 0.12);
+    color: rgba(176, 43, 200, 1)
+}
+
+.badge-no-deposit {
+    background-color: rgba(0, 198, 89, 0.12);
+    color: rgba(0, 198, 89, 1);
+}
+
+.badge-no-bonus {
+    background-color: rgba(200, 43, 50, 0.12);
+    color: rgba(200, 43, 50, 1);
+}
+
+/* Кнопки */
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    height: 38px;
+    letter-spacing: 2%;
+}
+
+.btn-review {
+    background-color: rgba(246, 246, 246, 1);
+    color: rgba(38, 47, 86, 1);
+    width: 90px;
+    border-radius: 6px;
+}
+
+.btn-site {
+    width: 82px;
+    background-color: rgba(0, 198, 89, 1);
+    color: rgba(255, 255, 255, 1);
+    border-radius: 6px;
+}
+
+.btn-review:hover {
+    background-color: #d0d0d0;
+}
+
+.btn-site:hover {
+    background-color: #3e8e41;
+}
+
+/* ==========================================================================
+   5. АНИМАЦИИ
+   ========================================================================== */
+
+/* Анимация появления новой строки */
+.new-row {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.new-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Анимации звезд */
+.star:hover {
+    animation: sparkle 0.5s ease infinite;
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7));
+}
+
+.star.exploding {
+    animation: star-explosion 0.6s ease-out forwards;
+}
+
+.spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: gold;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: spark-fly 1s ease-out forwards;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Анимация металлического блика для бейджей */
 .badge::before {
     content: '';
     position: absolute;
@@ -429,17 +404,69 @@ justify-content: center;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
     transition: none;
 }
 
 .badge:hover::before {
     animation: metal-shine 1.2s ease-in-out;
+}
+
+.badge-exclusive:hover {
+    box-shadow: 0 0 8px rgba(176, 43, 200, 0.3);
+}
+
+.badge-no-deposit:hover {
+    box-shadow: 0 0 8px rgba(0, 198, 89, 0.3);
+}
+
+.badge-no-bonus:hover {
+    box-shadow: 0 0 8px rgba(200, 43, 50, 0.3);
+}
+
+/* Ключевые кадры (@keyframes) */
+@keyframes sparkle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes star-explosion {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes spark-fly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
 }
 
 @keyframes metal-shine {
@@ -454,26 +481,241 @@ justify-content: center;
     }
 }
 
-/* Усилим эффект для разных типов бейджей */
-.badge-exclusive:hover {
-    box-shadow: 0 0 8px rgba(176, 43, 200, 0.3);
-}
 
-.badge-no-deposit:hover {
-    box-shadow: 0 0 8px rgba(0, 198, 89, 0.3);
-}
+@media (max-width: 768px) {
+    /* --- Общие стили для мобильной версии --- */
+    body {
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+    
+    ::-webkit-scrollbar {
+        width: 0;
+    }
 
-.badge-no-bonus:hover {
-    box-shadow: 0 0 8px rgba(200, 43, 50, 0.3);
-}
+    /* ИЗМЕНЕНИЕ 1: Делаем контейнер полноэкранным на мобильных устройствах */
+    .container {
+        margin: 18px 16px; /* Убираем боковые отступы */
+        padding: 20px 0 24px; /* Убираем боковые внутренние отступы */
+        padding-bottom: 0;
+        max-width: none;
+        width: unset;
+        border-radius: 8px; /* Убираем скругление для полноэкранного вида */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border: solid rgba(217, 234, 250, 1) 1px;
+    }
 
-.new-row {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
+    /* --- Скрытие/отображение элементов --- */
+    .h1-desktop,
+    .tabs__rows,
+    .how-rating,
+    .right-arrow,
+    .flex-table-header {
+        display: none;
+    }
 
-.new-row.visible {
-    opacity: 1;
-    transform: translateY(0);
+    .h1-mobile {
+        display: block;
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+    /* --- Шапка --- */
+    /* ИЗМЕНЕНИЕ 2: Компенсируем отступы для шапки */
+    .container__head {
+        padding: 0 16px;
+        margin-bottom: 20px;
+    }
+
+    /* --- Таблица и ее строки --- */
+    .flex-table-row {
+        flex-direction: row; 
+        align-items: center; 
+        /* ИЗМЕНЕНИЕ 3: Компенсируем отступы для контента внутри строк */
+        padding: 12px 16px;
+        gap: 10px;
+        justify-content: space-around;
+    }
+    
+    #table-body {
+        border-top: none;
+    }
+
+    /* Добавляем верхнюю границу ТОЛЬКО первой строке */
+    #table-body .flex-table-row:first-child {
+        border-top: 1px solid rgba(217, 234, 250, 1);
+    }
+
+     
+    #table-body .flex-table-row:last-child {
+        border-bottom: none;
+    }
+
+    /* --- Колонки --- */
+    .flex-col-logo {
+        flex-basis: 80px;
+        justify-content: flex-start;
+    }
+
+    .flex-col-rating {
+        flex: 0 1 auto;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .flex-col-actions {
+        flex: 1 1 90px; 
+        justify-content: flex-end;
+    }
+
+    .bookmaker-logo {
+        width: 80px;
+        height: 14px;
+    }
+
+    .logo-container {
+        width: 80px;
+        height: 14px;
+    }
+
+    /* --- Мобильный вид рейтинга --- */
+    .rating-stars {
+        display: flex;
+        flex-direction: column;  
+        align-items: center;      
+        gap: 4px;                 
+        margin-right: 0;          
+    }
+
+    .rating-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .rating-value {
+        font-size: 12px;                
+        text-decoration: underline;     
+        order: 2;                       
+    }
+
+    .star{
+        width: 12px;
+        height: 12px;
+    }
+
+    .star-container {
+        display: none;    
+        order: 1;         
+        margin: 0;        
+    }
+    
+    .star-container:first-of-type {
+        display: block;   
+    }
+    
+    /* --- Кнопки в мобильной версии --- */
+    .btn-site {
+        width: 100%; 
+        max-width: 90px;
+    }
+
+    /* --- Футер и кнопка --- */
+    .footer-links {
+        display: none;
+    }
+    
+    .see-more-wrap {
+        width: 100%;
+    }
+
+    .see-more {
+        display: block;
+        width: 100%;
+        background-color: rgba(0, 198, 89, 1);
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        padding: 16px 10px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1;
+        transition: background-color 0.3s;
+    }
+    
+    .see-more:hover {
+         background-color: #3e8e41; 
+    }
+
+    .verified-badge {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .flex-col-bonus{
+        flex: unset;
+        flex-basis: 66px;
+    }
+
+    .flex-col-reviews{
+        display: none;
+    }
+
+    .flex-col-actions{
+        flex: 0 0 90px;
+    }
+
+    .bonus-wrap{
+        line-height: 12px;
+        font-size: 12px;
+    }
+
+    .badge {
+        padding: 4px 6px;
+        font-size: 8px;
+        line-height: 8px;
+    }
+
+    .bonus-icon{
+        width: 12px;
+        height: 12px;
+    }
+
+    .btn {
+     height: 32px;
+     padding: 12px 12px 12px 10px;
+     font-size: 10px;
+     line-height: 10px;
+    }
+
+    .btn-review{
+        max-width: 59px;
+    }
+
+    .btn-site{
+        max-width: 53px;
+    }
+
+    .full-container{
+        display: flex;
+        height: 65px;
+        background-color: white;
+        margin: 0 16px;
+        border-radius: 8px;
+        border: solid rgba(217, 234, 250, 1) 1px ;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
 }

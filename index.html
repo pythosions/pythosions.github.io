@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Топ букмекерских контор</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+
+    <div class="container"> 
         <div class="container__head">
-            <h1>Топ букмекерских контор</h1>
+            <h1 class="h1-desktop">Топ букмекерских контор</h1>
+            <h1 class="h1-mobile">Рейтинг букмекерских контор</h1>
             <div class="head__additional-menu"></div>
         </div>
+
         <div class="tabs__rows">
             <div class="tabs_item tabs-tem--active">Народный рейтинг</div>
             <div class="tabs_item">Рейтинг редакции</div>
@@ -23,19 +28,25 @@
         </div>
         
         <div class="flex-table">
-            <!-- Записи будут добавляться через JS -->
+            <!-- Table rows are dynamically injected here -->
             <div id="table-body" class="flex-table-body"></div>
         </div>
         
         <div class="footer-links">
-            <div class="see-more-wrap"> 
-                <a href="#" class="see-more">Смотреть дальше</a>
-                <div class="right-arrow"></div>
-            </div>
+            <a href="#" class="see-more">
+                Смотреть полный рейтинг
+                <span class="right-arrow"></span>
+            </a>
             <a href="#" class="how-rating">Как формируется рейтинг?</a>
         </div>
     </div>
-    <script src="mock-api.js"></script>
-    <script src="script.js"></script>
+
+    <div  class="full-container" id="full-container">
+        СМОТРЕТЬ ПОЛНЫЙ РЕЙТИНГ
+    </div>
+    
+    <script src="mock-api.js" defer></script>
+    <script src="script.js" defer></script>
+
 </body>
 </html>
