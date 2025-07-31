@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Топ букмекерских контор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container__head">
+            <h1>Топ букмекерских контор</h1>
+            <div class="head__additional-menu"></div>
+        </div>
+        <div class="tabs__rows">
+            <div class="tabs_item tabs-tem--active">Народный рейтинг</div>
+            <div class="tabs_item">Рейтинг редакции</div>
+            <div class="tabs_item">Рейтинг по бонусу</div>
+            <div class="tabs_item">Рейтинг по надежности</div>
+        </div>
+        
+        <div class="flex-table">
+            <!-- Записи будут добавляться через JS -->
+            <div id="table-body" class="flex-table-body"></div>
+        </div>
+        
+        <div class="footer-links">
+            <div class="see-more-wrap"> 
+                <a href="#" class="see-more">Смотреть дальше</a>
+                <div class="right-arrow"></div>
+            </div>
+            <a href="#" class="how-rating">Как формируется рейтинг?</a>
+        </div>
+    </div>
+    <script src="mock-api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

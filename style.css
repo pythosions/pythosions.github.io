@@ -1,0 +1,479 @@
+/* Общие стили */
+body {
+    font-family: Rubik, sans-serif;
+    line-height: 1.6;
+    color: #262F56;
+    margin: 0;
+    background-color: #f5f5f5;
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px 0 5px 0px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 25px;
+    line-height: 37px;
+    margin-left: 10px;
+    margin-top: 12px;
+    width: max-content;
+    color: #262F56;
+    font-weight: 500;
+}
+
+.container__head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.head__additional-menu{
+    width: 16px;
+    height: 16px;
+    content: url(/img/UI/more_menu.svg);
+}
+
+.tabs__rows{
+    display: flex;
+    flex-direction: row;
+    height: 62px;
+    width: 100%;
+    border-top: solid #D9EAFA 1px;
+    border-bottom: solid #D9EAFA 1px;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.tabs_item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.tabs-tem--active{
+    display: flex;
+    font-weight: 500;
+    border-bottom: solid #00C659 3px;
+}
+
+/* Flex-таблица */
+.flex-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.flex-table-header, .flex-table-row {
+    display: flex;
+    padding: 12px 15px;
+    align-items: center;
+    border-bottom: 1px solid rgba(217, 234, 250, 1);
+}
+
+.flex-table-header {
+    font-weight: bold;
+    background-color: #f8f8f8;
+    color: #444;
+}
+
+.flex-table-row:hover {
+    background-color: #f9f9f9;
+}
+
+/* Колонки */
+.flex-col-logo {
+    flex: 0;
+ flex-basis: 140px;
+ display: flex;
+ justify-content: center;
+}
+
+.flex-col-rating {
+    flex: 1;
+ flex-basis: 130px;
+ display: flex;
+justify-content: center;
+}
+
+.flex-col-reviews {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.flex-col-bonus {
+    flex: 1;
+    flex-basis: 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.flex-col-actions {
+    flex: 0;
+    flex-basis: 180px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* Стили для элементов внутри строк */
+.logo-container {
+    position: relative;
+    width: 120px;
+    height: 20px;
+    display: inline-block;
+}
+
+.bookmaker-logo {
+    width: 120px;
+    height: 20px;
+    object-fit: cover;
+}
+
+.verified-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+}
+
+.rating-value{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.rating-stars {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.star-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.star {
+    width: 16px;
+    height: 16px;
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: gold;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: spark-fly 1s ease-out forwards;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Бейджи */
+.badge {
+    display: inline-block;
+    padding: 6px 8px;
+    border-radius: 30px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+.badge-exclusive {
+    background-color: rgba(176, 43, 200, 0.12);
+    color: rgba(176, 43, 200, 1)
+}
+
+.badge-no-deposit {
+    background-color: rgba(0, 198, 89, 0.12)    ;
+    color: rgba(0, 198, 89, 1);
+}
+
+.badge-no-bonus {
+    background-color: rgba(200, 43, 50, 0.12);
+    color: rgba(200, 43, 50, 1);
+}
+
+/* Кнопки */
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 12px;
+
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    height: 38px;
+    letter-spacing: 2%;
+}
+
+.btn-review {
+    background-color: rgba(246, 246, 246, 1);
+    color: rgba(38, 47, 86, 1);
+
+    width: 90px;
+    border-radius: 6px;
+}
+
+.btn-site {
+    width: 82px;
+    background-color: rgba(0, 198, 89, 1);
+    color: rgba(255, 255, 255, 1);
+    border-radius: 6px;
+
+}
+
+.btn-review:hover {
+    background-color: #d0d0d0;
+}
+
+.btn-site:hover {
+    background-color: #3e8e41;
+}
+
+/* Футер */
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    height: 74px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+}
+
+.see-more-wrap{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #262F56;
+}
+
+.right-arrow{
+    content: url(/img/UI/arrow_right.svg);
+    width: 16px;
+    height: 12px;
+}
+
+.see-more {
+    text-decoration: none;
+    font-weight: 500;
+    color: #262F56;
+    font-size: 15px;
+}
+
+.how-rating {
+    color: #00C659;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+/* Анимации */
+@keyframes sparkle {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes star-explosion {
+    0% { transform: scale(1); opacity: 1; }
+    20% { transform: scale(1.5); opacity: 0.8; }
+    100% { transform: scale(0.5); opacity: 0; }
+}
+
+.star:hover {
+    animation: sparkle 0.5s ease infinite;
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7));
+}
+
+.star.exploding {
+    animation: star-explosion 0.6s ease-out forwards;
+}
+
+.spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: gold;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: spark-fly 1s ease-out forwards;
+    top: 50%; /* Центрируем искры */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрируем искры */
+}
+
+@keyframes spark-fly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .flex-table-header {
+        display: none;
+    }
+    
+    .flex-table-row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    
+    .flex-col-logo,
+    .flex-col-rating,
+    .flex-col-reviews,
+    .flex-col-bonus,
+    .flex-col-actions {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+    
+    .flex-col-actions {
+        justify-content: flex-start;
+    }
+}
+
+/* Стили для обертки отзывов */
+.review-wrap {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    gap: 4px;
+}
+
+/* Стили для иконки отзывов */
+.review-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/UI/review_icon.svg'); /* Укажите путь к вашей иконке */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .review-wrap {
+        justify-content: flex-start;
+    }
+}
+
+
+/* Добавьте этот стиль в CSS */
+.bonus-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.bonus-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/UI/gift_ico.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+/* Анимация металлического отлива для бейджей */
+.badge {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: none;
+}
+
+.badge:hover::before {
+    animation: metal-shine 1.2s ease-in-out;
+}
+
+@keyframes metal-shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Усилим эффект для разных типов бейджей */
+.badge-exclusive:hover {
+    box-shadow: 0 0 8px rgba(176, 43, 200, 0.3);
+}
+
+.badge-no-deposit:hover {
+    box-shadow: 0 0 8px rgba(0, 198, 89, 0.3);
+}
+
+.badge-no-bonus:hover {
+    box-shadow: 0 0 8px rgba(200, 43, 50, 0.3);
+}
+
+.new-row {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.new-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
