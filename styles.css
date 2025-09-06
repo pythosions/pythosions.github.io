@@ -1,3 +1,121 @@
-h1{
-    color: blueviolet;
+/* --- Общие стили для страницы --- */
+body {
+    font-family: sans-serif;
+    background-color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* --- Стили для галереи --- */
+
+/* Контейнер, который выравнивает все картинки в сетку */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 85%;
+    max-width: 1400px;
+    margin: 40px auto;
+}
+
+/* Стили для каждой ссылки-обертки */
+.gallery-item {
+    text-decoration: none;
+    display: block;
+}
+
+
+/* --- ИЗМЕНЕНО: Общие стили для плейсхолдера И для картинки --- */
+/* Мы используем запятую, чтобы применить одни и те же стили к обоим элементам */
+.image-placeholder,
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Задаем форму */
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block; /* Важно для img, чтобы убрать лишние отступы */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* --- Отдельный стиль только для плейсхолдера --- */
+.image-placeholder {
+    background-color: #c7c7c7;
+}
+
+/* --- Отдельные стили только для картинки --- */
+.gallery-item img {
+    height: 100%;
+    /* Это свойство заставляет картинку заполнить блок без искажений */
+    object-fit: cover; 
+}
+
+
+/* --- Эффект при наведении (теперь работает для обоих) --- */
+.gallery-item:hover .image-placeholder,
+.gallery-item:hover img {
+    transform: scale(1.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    position: relative;
+}
+
+/* --- Стили для подсказки --- */
+
+/* Контейнер, который мы позиционируем в углу экрана */
+.tooltip-container {
+    position: fixed; /* Фиксированное положение относительно окна браузера */
+    top: 20px;       /* Отступ 20px сверху */
+    right: 20px;      /* Отступ 20px справа */
+    z-index: 100;    /* Убедимся, что он поверх других элементов */
+}
+
+/* Стили самого значка '?' */
+.tooltip-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #777; /* Серый фон для значка */
+    color: white;
+    border-radius: 50%; /* Делаем его круглым */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: help; /* Меняем курсор, чтобы показать, что это справка */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Стили для текста-подсказки (по умолчанию он скрыт) */
+.tooltip-text {
+    position: absolute; /* Позиционируем относительно родителя (.tooltip-container) */
+    right: 120%;      /* Сдвигаем влево от значка */
+    top: 50%;         /* Центрируем по вертикали */
+    transform: translateY(-50%); /* Точная вертикальная центровка */
+
+    background-color: rgba(0, 0, 0, 0.85); /* Полупрозрачный черный фон */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    white-space: nowrap; /* Запрещаем перенос текста на новую строку */
+
+    /* --- Анимация --- */
+    /* Изначально подсказка полностью прозрачна и невидима */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Не реагирует на клики, когда скрыта */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Плавный переход для opacity */
+}
+
+/* --- Эффект при наведении --- */
+
+/* Когда мы наводим курсор на контейнер, делаем текст-подсказку видимой */
+.tooltip-container:hover .tooltip-text {
+    opacity: 1;
+    visibility: visible;
 }

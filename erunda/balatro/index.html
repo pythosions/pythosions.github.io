@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balatro</title>
+    
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div class="app"></div>
+
+    <script>
+        const Card = {
+  props: ['suit', 'rank'],
+  setup(props) {
+    const color = Vue.computed(() => {
+      switch (props.suit) {
+        case '♥': return 'hsl(0deg, 80%, 50%)'
+        case '♠': return 'hsl(240deg, 10%, 20%)'
+        case '♦': return 'hsl(30deg, 80%, 50%)'
+        case '♣': return 'hsl(240deg, 60%, 60%)'
+      }
+    })
+    
+    const randomModifier = Math.random()
+    
+    return { color, randomModifier }
+  },
+  template: `
+    <div
+      class="card-wrapper"
+      :style="{color: color, '--rand': randomModifier}"
+      @click="$emit('clicked')"
+    >
+      <div
+        class='card'
+      >
+        <span class="r1">{{ rank }}</span>
+        <span class="s1">{{ suit }}</span>
+        <span class="s2">{{ suit }}</span>
+        <span class="r2">{{ rank }}</span>
+        <span class="s3">{{ suit }}</span>
+      </div>
+    </div>
+  `
+}
+
+const DeckPool = {
+  props: ['cards'],
+  components: { Card },
+  template: `
+    <div class="deck-pool">
+      <Card
+        v-for="(card, index) in cards"
+        :suit="card.suit"
+        :rank="card.rank"
+        @clicked="cards.splice(index, 1)"
+      />
+    </div>
+  `
+}
+
+const App = {
+  components: { DeckPool },
+  setup() {
+    const suits = ['♠', '♣', '♥', '♦']
+    const ranks = ['A', 'K', 'Q', 'J', '10',
+                   '9', '8', '7', '6',
+                   '5', '4', '3', '2']
+    
+    const cards = Vue.ref(suits.reduce((s,c) => {
+      ranks.forEach(rank => {
+        s.push({rank: rank, suit: c})
+      })
+      return s
+    }, []))
+    
+    return { cards }
+  },
+  template: `
+    <DeckPool :cards="cards" />
+  `
+}
+
+const app = Vue.createApp(App)
+
+app.mount('.app')
+    </script>
+</body>
+
+
+<style>
+    * {
+  box-sizing: border-box;
+  color: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+}
+
+html {
+  font-family: monospace;
+}
+
+body {
+  --ambientAmount: .1;
+  animation: ambientMovement;
+  animation-duration: 24s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(
+    calc(180deg * var(--ambientAmount)),
+    hsl(150deg, 40%, 40%),
+    hsl(150deg, 30%, 30%)
+  );
+}
+
+.deck-pool {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: .5vw;
+  padding: .5vw;
+  background-color: hsla(0deg, 0%, 0%, 10%);
+  border-radius: .5vw;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.card-wrapper {
+  transform-style: preserve-3d;
+  background-color: hsla(0deg, 0%, 0%, 10%);
+  border-radius: .25vw;
+  cursor: pointer;
+  animation-name: ambientMovement;
+  animation-duration: 4000ms;
+  animation-delay: calc(-4000ms * var(--rand));
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform: rotateZ(calc(var(--ambientAmount) * 10deg));
+  
+  &:hover .card {
+    animation-name: easeOutElastic;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+    transform: translateZ(calc(var(--easeAmount) * 50px));
+    box-shadow:
+      0 .15em
+      calc(.5em + (var(--easeAmount) * .5em))
+      calc(-.25em - (var(--easeAmount) * .25em))
+      currentColor;
+    z-index: 1;
+  }
+}
+
+.card {
+  will-change: transform;
+  position: relative;
+  display: grid;
+  grid-template:
+    "r1 .  . " 1fr
+    "s1 .  . " 1fr
+    ".  s2 . " 3fr
+    ".  .  s3" 1fr
+    ".  .  r2" 1fr
+    / 1fr 3fr 1fr;
+  background-color: white;
+  box-shadow: 0 .15em .5em -.25em currentColor;
+  border: 1px solid currentColor;
+  line-height: 1;
+  aspect-ratio: 4 / 5;
+  border-radius: .25vw;
+  text-align: center;
+  padding: .25em;
+  font-size: 1vw;
+  font-weight: bold;
+  pointer-events: none;
+  
+  .s1 { grid-area: s1; }
+  .s2 { grid-area: s2; font-size: 3em; }
+  .s3 { grid-area: s3; transform: rotate(180deg) }
+  
+  .r1 { grid-area: r1; }
+  .r2 { grid-area: r2; transform: rotate(180deg) }
+}
+
+@keyframes easeOutElastic {
+	0% { --easeAmount: 0; }
+	16% { --easeAmount: 1.3227; }
+	28% { --easeAmount: .8688; }
+	44% { --easeAmount: 1.0463; }
+	59% { --easeAmount: .9836; }
+	73% { --easeAmount: 1.0058; }
+	88% { --easeAmount: .998; }
+	100% { --easeAmount: 1; }
+}
+
+@keyframes ambientMovement {
+  0%, 100% { --ambientAmount: .1; }
+  50% { --ambientAmount: -.1; }
+}
+
+@property --easeAmount {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --ambientAmount {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: .1;
+}
+</style>
+
+
+</html>

@@ -7,7 +7,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Test Init</h1>
+<!-- Контейнер для значка и текста-подсказки -->
+<div class="tooltip-container">
+    <div class="tooltip-icon">?</div>
+    <span class="tooltip-text">Это галерея но всякой интересной (или не очень) ерундой<br> написанной или найденной мною в интернете</span>
+</div>
+    <!-- Контейнер для всей галереи -->
+    <div class="gallery-container">
+        <!-- 1-й ряд -->
+        <a href="/erunda/balatro" class="gallery-item">
+               <img src="img/balatro.png" alt="Карты в стиле балатро">
+        </a>
+        <a href="/erunda/balatro-bg" class="gallery-item">
+               <img src="img/balatro-bg.png" alt="Карты в стиле балатро">
+        </a>
+        <a href="#" class="gallery-item">
+            <div class="image-placeholder"></div>
+        </a>    
+
+        <!-- 2-й ряд -->
+        <a href="#" class="gallery-item">
+            <div class="image-placeholder"></div>
+        </a>
+        <a href="#" class="gallery-item">
+            <div class="image-placeholder"></div>
+        </a>
+        <a href="#" class="gallery-item">
+            <div class="image-placeholder"></div>
+        </a>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
